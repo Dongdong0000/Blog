@@ -1,4 +1,4 @@
-baseURL = "https://Dongdong0000.github.io/Blog/"
+baseURL = "https://Dongdong0000.github.io/Research/"
 title = "Blog"
 theme = "PaperMod"
 
@@ -43,7 +43,7 @@ buildExpired = false
 
   defaultTheme = "auto"       # auto / light / dark
   disableThemeToggle = false
-  ShowShareButtons = true
+  ShowShareButtons = false
   ShowReadingTime = true
   ShowCodeCopyButtons = true  # 코드 블록 복사 버튼
   ShowWordCount = true
@@ -51,40 +51,30 @@ buildExpired = false
   TocOpen = false             # 목차 기본 접힘 상태
   ShowBreadCrumbs = true
   ShowPostNavLinks = true
-  ShowRssButtonInSectionTermList = true
+  ShowRssButtonInSectionTermList = false
   UseHugoToc = true
 
   [params.homeInfoParams]
     Title = "Research Log \U0001F4DD"
     Content = "시스템 프로그래밍(OS·보안)과 네트워크를 공부하며 남기는 기록입니다."
 
-  # 소셜 아이콘 (원하면 URL 채우기, 안 쓰면 지워도 됨)
-  [[params.socialIcons]]
-    name = "github"
-    url = "https://github.com/Dongdong0000"
-
-# ── 상단 메뉴 ─────────────────────────────────
+# ── 상단 메뉴 (대분류 섹션) ────────────────────
 [menu]
   [[menu.main]]
-    identifier = "posts"
-    name = "Posts"
-    url = "/posts/"
+    identifier = "network"
+    name = "네트워크"
+    url = "/posts/network/"
     weight = 10
   [[menu.main]]
-    identifier = "tags"
-    name = "Tags"
-    url = "/tags/"
+    identifier = "security"
+    name = "보안"
+    url = "/posts/security/"
     weight = 20
   [[menu.main]]
-    identifier = "search"
-    name = "Search"
-    url = "/search/"
+    identifier = "system"
+    name = "시스템"
+    url = "/posts/system/"
     weight = 30
-  [[menu.main]]
-    identifier = "archive"
-    name = "Archive"
-    url = "/archives/"
-    weight = 40
 
 # ── 검색 기능용 출력 포맷 ──────────────────────
 [outputs]
