@@ -83,3 +83,93 @@
         --kbd-border-color: #3c5142;
     }
 }
+
+/*
+*   본문 / 코드 / 다이어그램 구분
+*
+*   문제: Stack 의 라이트 코드배경(#fafafa)과 카드배경(#fbfdf8)의 대비가 1.02:1 —
+*        사실상 같은 색이라 코드가 본문에 묻힙니다. 다이어그램도 배경이 없어 떠 보입니다.
+*
+*   해결: 코드블록은 라이트/다크 모두 어둡게 깔아 확실히 분리(대비 14.6:1).
+*        hugo.toml 의 style = "monokai" 의도와도 맞습니다.
+*        (Stack 은 noClasses=false 일 때 자체 구문테마를 쓰므로 style 설정이 무시됩니다)
+*
+*   ※ 주의: 다이어그램도 <pre class="mermaid"> 태그입니다.
+*     코드 규칙에 :not(.mermaid) 를 빼면 다이어그램까지 검게 칠해집니다.
+*/
+
+/* ── 라이트 모드: 코드블록을 어둡게 (Stack 의 다크 구문테마를 재사용) ── */
+[data-scheme="light"] {
+    --pre-text-color: #f8f8f2;
+    --pre-background-color: #22291f;
+
+    @import "partials/highlight/dark.scss";
+
+    .chroma,
+    .article-content pre:not(.mermaid) {
+        background-color: #22291f;
+    }
+}
+
+/* ── 다크 모드: 카드보다 더 어둡게 ───────────────── */
+[data-scheme="dark"] {
+    --pre-background-color: #131a15;
+
+    .chroma,
+    .article-content pre:not(.mermaid) {
+        background-color: #131a15;
+    }
+}
+
+/* ── 코드블록 공통: 테두리로 경계를 못박음 ───────── */
+.article-content {
+    .highlight,
+    > pre:not(.mermaid) {
+        border: 1px solid rgba(47, 93, 63, 0.28);
+        border-radius: 8px;
+        overflow: hidden;
+    }
+
+    .chroma .lnt {
+        opacity: 0.45;   /* 줄번호를 죽여 코드 자체가 먼저 읽히게 */
+    }
+}
+
+[data-scheme="dark"] .article-content {
+    .highlight,
+    > pre:not(.mermaid) {
+        border-color: rgba(157, 199, 159, 0.2);
+    }
+}
+
+/* ── 다이어그램: 옅은 배경 + 테두리로 하나의 덩어리처럼 ──
+   코드 규칙과 특이도를 맞추려고 [data-scheme] 를 함께 붙입니다 */
+[data-scheme="light"] .article-content {
+    pre.mermaid,
+    .mermaid-wrapper {
+        background: #f3f7ee;
+        border: 1px solid rgba(47, 93, 63, 0.22);
+        border-radius: 8px;
+    }
+}
+
+[data-scheme="dark"] .article-content {
+    pre.mermaid,
+    .mermaid-wrapper {
+        background: #1a271f;
+        border: 1px solid rgba(157, 199, 159, 0.22);
+        border-radius: 8px;
+    }
+}
+
+/* wrapper 가 생기면 안쪽 pre 의 배경/테두리는 중복이므로 지웁니다 */
+.article-content .mermaid-wrapper {
+    padding: 1.2rem 0.5rem;
+
+    pre.mermaid {
+        background: transparent;
+        border: 0;
+        border-radius: 0;
+        padding: 0;
+    }
+}
