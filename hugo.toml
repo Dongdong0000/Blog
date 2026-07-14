@@ -1,10 +1,10 @@
 baseURL = "https://Dongdong0000.github.io/Research/"
-title = "Blog"
-theme = "PaperMod"
+title = "Research Log"
+theme = "hugo-theme-stack"
 
 # 한국어 설정
 defaultContentLanguage = "ko"
-languageCode = "ko-kr"
+locale = "ko-kr"          # Hugo 0.158+ 에서 languageCode 를 대체
 hasCJKLanguage = true   # 한국어/중국어/일본어 글자 수 계산 및 요약을 정확하게
 
 # 페이지네이션 (한 페이지에 보여줄 글 개수)
@@ -20,10 +20,11 @@ buildExpired = false
 # ── 코드 하이라이팅 ───────────────────────────
 [markup]
   [markup.highlight]
-    noClasses = false      # PaperMod 다크모드와 연동되려면 false 여야 함
+    noClasses = false      # 테마 다크모드와 연동되려면 false 여야 함
     codeFences = true
     guessSyntax = true
     lineNos = true         # 코드 줄번호 표시
+    lineNumbersInTable = true
     style = "monokai"
     tabWidth = 4
   # Markdown에서 원시 HTML 허용 (필요 시)
@@ -35,47 +36,85 @@ buildExpired = false
     endLevel = 4
     ordered = false
 
+# ── 분류 체계 ─────────────────────────────────
+[taxonomies]
+  category = "categories"
+  tag = "tags"
+
 # ── 사이트 파라미터 ───────────────────────────
 [params]
-  env = "production"
+  # 글이 들어있는 섹션 (Stack 기본값은 "post" 인데 이 블로그는 "posts")
+  mainSections = ["posts"]
+  rssFullContent = true
   description = "시스템 프로그래밍, 보안, 네트워크 공부 기록"
-  author = "Dongdong0000"
 
-  defaultTheme = "auto"       # auto / light / dark
-  disableThemeToggle = false
-  ShowShareButtons = false
-  ShowReadingTime = true
-  ShowCodeCopyButtons = true  # 코드 블록 복사 버튼
-  ShowWordCount = true
-  ShowToc = true              # 목차 표시
-  TocOpen = false             # 목차 기본 접힘 상태
-  ShowBreadCrumbs = true
-  ShowPostNavLinks = true
-  ShowRssButtonInSectionTermList = false
-  UseHugoToc = true
+  [params.dateFormat]
+    published = "2006-01-02"
+    lastUpdated = "2006-01-02"
 
-  [params.homeInfoParams]
-    Title = "Research Log \U0001F4DD"
-    Content = "시스템 프로그래밍(OS·보안)과 네트워크를 공부하며 남기는 기록입니다."
+  [params.footer]
+    since = 2026
 
-# ── 상단 메뉴 (대분류 섹션) ────────────────────
+  # 왼쪽 사이드바 (아바타 이미지를 넣으려면 avatar = "img/avatar.png")
+  [params.sidebar]
+    compact = false
+    emoji = "📝"
+    subtitle = "시스템 프로그래밍(OS·보안)과 네트워크를 공부하며 남기는 기록입니다."
+
+  [params.article]
+    headingAnchor = true
+    math = false
+    toc = true              # 목차 표시
+    readingTime = true      # 읽는 시간 표시
+
+    # Stack 내장 mermaid — 다크모드 자동 연동 + 확대 모달
+    [params.article.mermaid]
+      lightTheme = "default"
+      darkTheme = "dark"
+
+    [params.article.license]
+      enabled = false
+
+  # 홈 우측 위젯
+  [params.widgets]
+    homepage = [
+      { type = "search" },
+      { type = "archives", params = { limit = 5 } },
+      { type = "categories", params = { limit = 10 } },
+      { type = "tag-cloud", params = { limit = 10 } },
+    ]
+    page = [{ type = "toc" }]
+
+  [params.comments]
+    enabled = false
+
+# ── 상단/사이드바 메뉴 (대분류 섹션) ───────────
+# 검색·아카이브는 각 페이지의 프론트매터에서 메뉴에 등록됩니다
 [menu]
   [[menu.main]]
     identifier = "network"
     name = "네트워크"
     url = "/posts/network/"
     weight = 10
+    [menu.main.params]
+      icon = "hash"
   [[menu.main]]
     identifier = "security"
     name = "보안"
     url = "/posts/security/"
     weight = 20
+    [menu.main.params]
+      icon = "hash"
   [[menu.main]]
     identifier = "system"
     name = "시스템"
     url = "/posts/system/"
     weight = 30
+    [menu.main.params]
+      icon = "hash"
 
-# ── 검색 기능용 출력 포맷 ──────────────────────
+# ── 출력 포맷 ─────────────────────────────────
+# Stack 검색은 content/page/search/ 페이지의 JSON 을 색인으로 씁니다.
+# 홈에는 JSON 이 필요 없습니다 (PaperMod 시절에는 필요했음).
 [outputs]
-  home = ["HTML", "RSS", "JSON"]
+  home = ["HTML", "RSS"]
