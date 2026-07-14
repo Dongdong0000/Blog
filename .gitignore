@@ -1,0 +1,17 @@
+# Hugo 빌드 결과물 (GitHub Actions가 다시 생성하므로 커밋하지 않음)
+/public/
+/resources/_gen/
+/assets/jsconfig.json
+hugo_stats.json
+
+# Hugo 락 파일
+.hugo_build.lock
+
+# OS 파일
+.DS_Store
+Thumbs.db
+
+# 에디터
+.idea/
+.vscode/
+*.swp
