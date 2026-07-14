@@ -3,7 +3,6 @@ title: "첫 글 - 블로그 기능 테스트"
 date: 2026-07-14
 draft: false
 tags: ["테스트", "네트워크", "시스템"]
-categories: ["기록"]
 description: "Mermaid 다이어그램, 코드 하이라이팅, 목차가 잘 작동하는지 확인하는 첫 글입니다."
 ---
 
