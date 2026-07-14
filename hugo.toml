@@ -57,11 +57,9 @@ buildExpired = false
     since = 2026
 
   # 왼쪽 사이드바
-  # ※ Stack 은 이모지를 아바타 배지로 그립니다 — avatar 가 없으면 emoji 도 안 보입니다.
   [params.sidebar]
     compact = false
-    avatar = "img/avatar.png"   # assets/img/avatar.png (생성 스크립트: assets/img/avatar-source.py)
-    emoji = "🌿"
+    avatar = "img/avatar.png"   # assets/img/avatar.png
     subtitle = "시스템 프로그래밍(OS·보안)과 네트워크를 공부하며 남기는 기록입니다."
 
   [params.article]
