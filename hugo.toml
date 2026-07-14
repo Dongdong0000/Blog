@@ -1,5 +1,5 @@
 baseURL = "https://Dongdong0000.github.io/Research/"
-title = "Research Log"
+title = "개발일지"
 theme = "hugo-theme-stack"
 
 # 한국어 설정
@@ -47,7 +47,7 @@ buildExpired = false
   # 글이 들어있는 섹션 (Stack 기본값은 "post" 인데 이 블로그는 "posts")
   mainSections = ["posts"]
   rssFullContent = true
-  description = "시스템 프로그래밍, 보안, 네트워크 공부 기록"
+  description = "시스템 프로그래밍, 보안, 네트워크 공부 기록"   # 검색엔진·SNS 미리보기용
 
   [params.dateFormat]
     published = "2006-01-02"
@@ -60,7 +60,7 @@ buildExpired = false
   [params.sidebar]
     compact = false
     avatar = "img/avatar.png"   # assets/img/avatar.png
-    subtitle = "시스템 프로그래밍(OS·보안)과 네트워크를 공부하며 남기는 기록입니다."
+    subtitle = "시스템 프로그래밍, 보안, 네트워크를 공부합니다"
 
   [params.article]
     headingAnchor = true
