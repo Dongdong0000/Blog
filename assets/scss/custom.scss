@@ -1,0 +1,85 @@
+/*
+*   숲속 테마
+*   Stack 의 색 변수만 덮어씁니다. 테마 파일은 건드리지 않으므로
+*   나중에 Stack 을 업데이트해도 이 파일은 그대로 살아남습니다.
+*
+*   라이트: 이끼 낀 종이 위 — 옅은 초록 배경 + 깊은 침엽수 초록 강조
+*   다크  : 밤의 숲 — 짙은 수피 배경 + 달빛 받은 이끼색 강조
+*/
+
+:root {
+    /* 배경 — 아주 옅은 이끼빛. 흰색보다 눈이 편합니다 */
+    --body-background: #eaf0e3;
+
+    /* 강조색 — 깊은 침엽수 초록 */
+    --accent-color: #2f5d3f;
+    --accent-color-darker: #21432d;
+    --accent-color-text: #f4f8f0;
+
+    /* 본문 — 순수 회색 대신 초록기 도는 나무껍질색 */
+    --body-text-color: #5c6b5a;
+
+    /* 카드 — 배경보다 살짝 밝게 띄워 숲 바닥 위 나뭇잎처럼 */
+    --card-background: #fbfdf8;
+    --card-background-selected: #dfe8d6;
+    --card-text-color-main: #1b2a1f;
+    --card-text-color-secondary: #5b6d5c;
+    --card-text-color-tertiary: #6d7d6b;
+    --card-separator-color: rgba(47, 93, 63, 0.14);
+
+    /* 인용구 — 이끼 낀 돌 */
+    --blockquote-background-color: #e3ebda;
+
+    /* 링크 밑줄 하이라이트 (R,G,B 형식) */
+    --link-background-color: 122, 155, 122;
+
+    /* 인라인 코드 */
+    --code-background-color: rgba(47, 93, 63, 0.1);
+    --code-text-color: #3f6b4c;
+
+    /* 표 */
+    --table-border-color: #cfdcc6;
+    --tr-even-background-color: #e8efe1;
+    --kbd-border-color: #cfdcc6;
+
+    /* 그림자 — 나뭇잎 그늘처럼 초록빛이 살짝 도는 */
+    --shadow-l1: 0px var(--shadow-l1-y) var(--shadow-l1-blur) rgba(30, 60, 40, 0.06),
+                 0px 0px 2px rgba(30, 60, 40, 0.07),
+                 0px 0px 1px rgba(30, 60, 40, 0.05);
+    --shadow-l2: 0px var(--shadow-l2-y) var(--shadow-l2-blur) rgba(30, 60, 40, 0.07),
+                 0px 2px 6px rgba(30, 60, 40, 0.05),
+                 0px 0px 1px rgba(30, 60, 40, 0.05);
+
+    /* 태그를 나뭇잎처럼 둥글게 */
+    --tag-border-radius: 12px;
+
+    &[data-scheme="dark"] {
+        /* 밤의 숲 바닥 */
+        --body-background: #16211a;
+
+        /* 달빛 받은 이끼 */
+        --accent-color: #9dc79f;
+        --accent-color-darker: #7fae82;
+        --accent-color-text: #121d15;
+
+        --body-text-color: rgba(214, 231, 213, 0.72);
+
+        --card-background: #1f2e24;
+        --card-background-selected: rgba(157, 199, 159, 0.16);
+        --card-text-color-main: rgba(226, 240, 225, 0.92);
+        --card-text-color-secondary: rgba(226, 240, 225, 0.68);
+        --card-text-color-tertiary: rgba(226, 240, 225, 0.5);
+        --card-separator-color: rgba(157, 199, 159, 0.16);
+
+        --blockquote-background-color: #253527;
+
+        --link-background-color: 157, 199, 159;
+
+        --code-background-color: #253527;
+        --code-text-color: rgba(226, 240, 225, 0.9);
+
+        --table-border-color: #3c5142;
+        --tr-even-background-color: #253527;
+        --kbd-border-color: #3c5142;
+    }
+}

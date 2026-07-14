@@ -65,7 +65,7 @@ buildExpired = false
     headingAnchor = true
     math = false
     toc = true              # 목차 표시
-    readingTime = true      # 읽는 시간 표시
+    readingTime = false     # "2분 정도" 같은 읽는 시간 표시 끔
 
     # Stack 내장 mermaid — 다크모드 자동 연동 + 확대 모달
     [params.article.mermaid]
@@ -75,11 +75,9 @@ buildExpired = false
     [params.article.license]
       enabled = false
 
-  # 홈 우측 위젯
+  # 홈 우측 위젯 (검색·아카이브는 제거함)
   [params.widgets]
     homepage = [
-      { type = "search" },
-      { type = "archives", params = { limit = 5 } },
       { type = "categories", params = { limit = 10 } },
       { type = "tag-cloud", params = { limit = 10 } },
     ]
@@ -89,7 +87,6 @@ buildExpired = false
     enabled = false
 
 # ── 상단/사이드바 메뉴 (대분류 섹션) ───────────
-# 검색·아카이브는 각 페이지의 프론트매터에서 메뉴에 등록됩니다
 [menu]
   [[menu.main]]
     identifier = "network"
@@ -114,7 +111,5 @@ buildExpired = false
       icon = "hash"
 
 # ── 출력 포맷 ─────────────────────────────────
-# Stack 검색은 content/page/search/ 페이지의 JSON 을 색인으로 씁니다.
-# 홈에는 JSON 이 필요 없습니다 (PaperMod 시절에는 필요했음).
 [outputs]
   home = ["HTML", "RSS"]
