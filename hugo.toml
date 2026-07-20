@@ -109,13 +109,6 @@ buildExpired = false
     weight = 30
     [menu.main.params]
       icon = "hash"
-  [[menu.main]]
-    identifier = "projects"
-    name = "프로젝트"
-    url = "/posts/projects/"
-    weight = 40
-    [menu.main.params]
-      icon = "link"
 
 # ── 출력 포맷 ─────────────────────────────────
 [outputs]
