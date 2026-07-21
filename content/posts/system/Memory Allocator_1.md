@@ -1,6 +1,6 @@
 ---
 title: "Memory Allocator 설계 (1)"
-date: 2026-07-20
+date: 2026-07-21
 draft: false
 tags: ["시스템", "메모리"]
 description: "메모리 구조 및 malloc lib 설명"
