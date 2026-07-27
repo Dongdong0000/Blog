@@ -85,6 +85,80 @@
 }
 
 /*
+*   홈 글 목록 — 한 줄 컴팩트 형식
+*
+*   기본 Stack 홈은 카드 하나당 큰 여백을 쓰기 때문에 글이 3개만 있어도
+*   화면이 텅 비어 보입니다. 홈에서만 목록을 한 줄짜리로 바꿔
+*   글이 늘어나도 한눈에 스캔되게 합니다.
+*/
+.article-list--home {
+    article > a {
+        align-items: center;
+        gap: var(--spacing-md);
+        padding: 1.2rem 1.6rem;
+        transition: background-color 0.15s ease;
+    }
+
+    article > a:hover {
+        background-color: var(--card-background-selected);
+    }
+
+    .article-details {
+        min-height: 0;
+        gap: 0.3rem;
+    }
+
+    .article-title {
+        font-size: 1.5rem;
+        line-height: 1.45;
+        display: flex;
+        align-items: baseline;
+        flex-wrap: wrap;
+        gap: 0.6rem;
+    }
+
+    /* 섹션 배지 — 네트워크 / 보안 / 시스템 */
+    .article-section-badge {
+        flex-shrink: 0;
+        font-size: 1.1rem;
+        font-weight: 500;
+        line-height: 1;
+        padding: 0.35em 0.7em;
+        border-radius: var(--tag-border-radius);
+        color: var(--accent-color);
+        background-color: rgba(var(--link-background-color), 0.18);
+    }
+
+    .article-description {
+        font-size: 1.3rem;
+        color: var(--card-text-color-tertiary);
+        margin: 0;
+        /* 설명이 길어도 한 줄만 — 목록의 리듬을 지킵니다 */
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    /* 날짜는 오른쪽 끝에 고정 */
+    .article-time {
+        flex-shrink: 0;
+        font-size: 1.3rem;
+        color: var(--card-text-color-tertiary);
+        font-variant-numeric: tabular-nums;
+    }
+
+    /* 좁은 화면에서는 날짜를 제목 아래로 내리지 않고 그냥 줄입니다 */
+    @media (max-width: 480px) {
+        .article-title {
+            font-size: 1.4rem;
+        }
+        .article-description {
+            display: none;
+        }
+    }
+}
+
+/*
 *   본문 / 코드 / 다이어그램 구분
 *
 *   문제: Stack 의 라이트 코드배경(#fafafa)과 카드배경(#fbfdf8)의 대비가 1.02:1 —

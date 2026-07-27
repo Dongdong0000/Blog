@@ -1,0 +1,28 @@
+{{/*
+    홈 전용 한 줄 목록 아이템.
+    [섹션 배지] 제목 / 설명 ............... 날짜
+*/}}
+<article>
+    <a href="{{ .RelPermalink }}">
+        <div class="article-details">
+            <h2 class="article-title">
+                {{- with .CurrentSection -}}
+                    {{- if ne .RelPermalink "/posts/" -}}
+                        <span class="article-section-badge">{{ .Title }}</span>
+                    {{- end -}}
+                {{- end -}}
+                {{- .Title -}}
+            </h2>
+
+            {{- with .Params.description }}
+                <span class="article-description">{{ . }}</span>
+            {{- end }}
+        </div>
+
+        {{- if not .Date.IsZero }}
+        <time class="article-time" datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">
+            {{- .Date | time.Format .Site.Params.dateFormat.published -}}
+        </time>
+        {{- end }}
+    </a>
+</article>
