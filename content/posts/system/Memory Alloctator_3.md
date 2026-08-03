@@ -155,4 +155,4 @@ void *mm_realloc(void *ptr, size_t size)
 ```
 또 다른 block을 생성 한 후, 데이터 복사까지 마치면 원래 block은 free blcok으로 만든다.
 
-**여기까지가 implicit free list 구현이며 다음 편에서는 explicit free list 구현해볼 예정이다.**
+**여기까지가 implicit free list 구현이며 다음 편에서는 이어서 explicit free list 구현해볼 예정이다.**
