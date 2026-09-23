@@ -1,6 +1,6 @@
 ---
 title: "Memory Allocator 설계 (2)"
-date: 2026-08-03
+date: 2026-09-23
 draft: false
 tags: ["시스템", "메모리"]
 description: "implicit free list 구현 1편"
@@ -142,7 +142,7 @@ int mm_init(void)
 - 헤더 4 + 푸터 4, 페이로드는 0바이트다. 최소 블록 크기 16보다 작지만 문제되지 않는다. 이 블록은 할당되지도 해제되지도 않고, 오직 뒤를 돌아보는 블록에게 읽히기만 하기 때문이다. 담을 데이터가 없으니 자리도 필요 없다.
 
 **프롤로그에 푸터가 필요한 이유.** 
-- 단순한 표시가 아니라 실제로 읽힌다. `coalesce`의 첫 줄을 보자.
+- 단순한 표시가 아니라 실제로 읽힌다. `coalesce`의 첫 줄은 이렇게 되어있다.
 
 ```c
 size_t prev_alloc = GET_ALLOC(FTRP(PREV_BLKP(bp)));

@@ -1,6 +1,6 @@
 ---
 title: "Memory Allocator 설계 (3)"
-date: 2026-08-03
+date: 2026-09-23
 draft: false
 tags: ["시스템", "메모리"]
 description: "implicit free list 구현 2편"

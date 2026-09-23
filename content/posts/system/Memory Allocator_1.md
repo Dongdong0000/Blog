@@ -1,6 +1,6 @@
 ---
 title: "Memory Allocator 설계 (1)"
-date: 2026-07-21
+date: 2026-09-23
 draft: false
 tags: ["시스템", "메모리"]
 description: "메모리 구조 및 malloc lib 설명"
@@ -136,4 +136,4 @@ malloc(1TB) = (nil)  -> NULL 반환
 이제 sbrk로 큰 덩어리를 받아왔다고 하자. 여기서부터는 우리 몫이다.
 100바이트를 요청받으면 이 덩어리의 어디를 잘라 줄지 정해야 하고, 나중에 free(p)로 돌아오면 그 자리를 다시 쓸 수 있게 표시해둬야 한다. 그런데 free는 포인터 하나만 받는다. 크기는 알려주지 않는다. 얼마를 반납받은 건지 어떻게 알 수 있을까?
 
-**다음 편에서는 블록마다 머리와 꼬리에 크기를 적어두는 방식, implicit free list로 이 문제를 해결한다.**
+**다음 편에서는 블록마다 header와 footer에 크기를 적어두는 방식, implicit free list로 이 문제를 해결한다.**
