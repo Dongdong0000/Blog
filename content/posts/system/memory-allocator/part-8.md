@@ -2,6 +2,7 @@
 title: "Memory Allocator 설계 (8)"
 date: 2026-11-07T13:00:00+09:00
 draft: false
+aliases: ["/posts/system/memory_allocator_8/"]
 tags: ["시스템", "메모리"]
 description: "explicit free list 구현 5편 (A vs B 비교와 정리)"
 ---

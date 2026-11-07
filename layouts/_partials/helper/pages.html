@@ -1,0 +1,26 @@
+{{- /*
+    Stack helper/pages.html 덮어쓰기
+
+    섹션 페이지는 그 섹션의 글만 돌려줍니다. 하위 섹션(연재 묶음)은
+    layouts/list.html 이 따로 한 줄 행으로 보여주므로 여기서는 빼둡니다.
+    _index.md 에 seriesOrder: "asc" 가 있으면 1편부터(오래된 글 먼저) 정렬합니다.
+
+    <title> 을 만드는 partial 이 이 결과로 먼저 .Paginate 를 호출하고,
+    Hugo 는 첫 호출 결과를 재사용하므로 정렬은 반드시 여기서 해야 합니다.
+*/ -}}
+{{- $pages := .Pages -}}
+
+{{- if .IsHome -}}
+    {{- $pages = where .Site.RegularPages "Type" "in" .Site.Params.mainSections -}}
+{{- else if eq .Kind "section" -}}
+    {{- $pages = .RegularPages -}}
+    {{- if eq .Params.seriesorder "asc" -}}{{/* Hugo 는 front matter 키를 소문자로 바꿉니다 */}}
+        {{- $pages = $pages.ByDate -}}
+    {{- end -}}
+{{- else if or (eq .Kind "taxonomy") (eq .Kind "term") -}}
+    {{- $pages = .Pages -}}
+{{- end -}}
+
+{{- $pages := partial "helper/pages-sort.html" (dict "Pages" $pages "Context" .) -}}
+
+{{- return $pages -}}

@@ -1,0 +1,71 @@
+{{/*
+    섹션 목록 (Stack list.html 덮어쓰기)
+
+    - 글 목록을 홈과 같은 한 줄 형식으로 보여줍니다 (article-list/compact-home).
+    - 하위 섹션(예: 연재 묶음)은 큰 타일 대신 한 줄짜리 행으로 보여줍니다.
+      _index.md 에 completed: true 를 주면 "완결" 배지가 붙습니다.
+    - _index.md 에 seriesOrder: "asc" 를 주면 1편부터 읽는 순서(오래된 글 먼저)로 정렬합니다.
+      (정렬은 layouts/_partials/helper/pages.html 에서)
+*/}}
+{{ define "main" }}
+    <header>
+        <h3 class="section-title">
+            {{ if eq .Parent (.GetPage "/") }}
+                {{ T "list.section" }}
+            {{ else }}
+                {{ .Parent.Title }}
+            {{ end }}
+        </h3>
+
+        <div class="section-card">
+            <div class="section-details">
+                <h3 class="section-count">{{ T "list.page" (len .RegularPagesRecursive) }}</h3>
+                <h1 class="section-term">{{ .Title }}</h1>
+                {{ with .Params.description }}
+                    <h2 class="section-description">{{ . }}</h2>
+                {{ end }}
+            </div>
+        </div>
+    </header>
+
+    {{- /* 정렬(seriesOrder)은 helper/pages.html 에서 합니다 */ -}}
+    {{- $paginator := partial "helper/paginator.html" . -}}
+
+    {{- with .Sections -}}
+        <section class="article-list--compact article-list--home article-list--section">
+            {{ range . }}
+                <article class="series">
+                    <a href="{{ .RelPermalink }}">
+                        <div class="article-details">
+                            <h2 class="article-title">
+                                {{- if .Params.completed -}}
+                                    <span class="article-section-badge">완결</span>
+                                {{- end -}}
+                                {{- .Title -}}
+                            </h2>
+                            {{- with .Params.description }}
+                                <span class="article-description">{{ . }}</span>
+                            {{- end }}
+                        </div>
+                        <span class="article-time">{{ len .RegularPagesRecursive }}편</span>
+                    </a>
+                </article>
+            {{ end }}
+        </section>
+    {{- end -}}
+
+    {{- if $paginator.Pages -}}
+        <section class="article-list--compact article-list--home article-list--section">
+            {{ range $paginator.Pages }}
+                {{ partial "article-list/compact-home" . }}
+            {{ end }}
+        </section>
+        {{- partial "pagination.html" . -}}
+    {{- end -}}
+
+    {{ partialCached "footer/footer" . }}
+{{ end }}
+
+{{ define "right-sidebar" }}
+    {{ partial "sidebar/right.html" (dict "Context" . "Scope" "homepage") }}
+{{ end }}

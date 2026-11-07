@@ -105,6 +105,7 @@
 
     .article-details {
         min-height: 0;
+        min-width: 0;   /* 긴 설명이 한 줄 말줄임되도록 (없으면 날짜가 카드 밖으로 밀림) */
         gap: 0.3rem;
     }
 
@@ -155,6 +156,21 @@
         .article-description {
             display: none;
         }
+    }
+}
+
+/*
+*   섹션 목록 (layouts/list.html)
+*   홈과 같은 한 줄 형식을 쓰되, 섹션 이름은 이미 위 카드에 있으니 배지는 숨깁니다.
+*   단, 연재 행의 "완결" 배지는 남깁니다.
+*/
+.article-list--section {
+    article:not(.series) .article-section-badge {
+        display: none;
+    }
+
+    & + .article-list--section {
+        margin-top: var(--section-separation, 40px);
     }
 }
 

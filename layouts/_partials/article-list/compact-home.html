@@ -6,8 +6,9 @@
     <a href="{{ .RelPermalink }}">
         <div class="article-details">
             <h2 class="article-title">
-                {{- with .CurrentSection -}}
-                    {{- if ne .RelPermalink "/posts/" -}}
+                {{- /* 연재 하위 섹션 안의 글이어도 최상위 분류(네트워크/보안/시스템)를 배지로 */ -}}
+                {{- range .Ancestors -}}
+                    {{- if and .Parent (eq .Parent.Path "/posts") -}}
                         <span class="article-section-badge">{{ .Title }}</span>
                     {{- end -}}
                 {{- end -}}

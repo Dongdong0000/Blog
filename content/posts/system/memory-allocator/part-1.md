@@ -2,6 +2,7 @@
 title: "Memory Allocator 설계 (1)"
 date: 2026-09-23T10:00:00+09:00
 draft: false
+aliases: ["/posts/system/memory-allocator_1/"]
 tags: ["시스템", "메모리"]
 description: "메모리 구조 및 malloc lib 설명"
 ---
